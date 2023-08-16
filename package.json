@@ -14,7 +14,7 @@
     "build": "tsc"
   },
   "main": "./dist/main.js",
-  "types": "./dist/typings/index.d.ts",
+  "types": "./dist/main.d.ts",
   "files": [
     "./dist"
   ],
