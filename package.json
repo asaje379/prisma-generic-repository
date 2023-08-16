@@ -15,6 +15,9 @@
   },
   "main": "./dist/main.js",
   "types": "./dist/typings/index.d.ts",
+  "files": [
+    "./dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/asaje379/prisma-generic-repository"
