@@ -1,6 +1,6 @@
 {
   "name": "@asaje/prisma-generic-repository",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.5.0",
