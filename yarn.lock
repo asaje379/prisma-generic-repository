@@ -420,10 +420,10 @@ minimist@^1.2.6:
   dependencies:
     minimist "^1.2.6"
 
-nestjs-prisma-pagination@^1.0.23:
-  version "1.0.23"
-  resolved "https://registry.yarnpkg.com/nestjs-prisma-pagination/-/nestjs-prisma-pagination-1.0.23.tgz#25efbf23c69759ce57266aaa4a57ee845b28dafb"
-  integrity sha512-/cBfSsKJCAU6e37I3oN1YrWFQ8TJGjGA0fTWTVFkR+hdgXkNZXeTQqsMIOX7smVT3Vgg+6xM2kMctDt+YG1Ybw==
+nestjs-prisma-pagination@^1.0.24:
+  version "1.0.24"
+  resolved "https://registry.yarnpkg.com/nestjs-prisma-pagination/-/nestjs-prisma-pagination-1.0.24.tgz#f444f180b06334f99dd7409162a6bba110684031"
+  integrity sha512-IILzEH+vWNWv76bx828cfIqkeJGeKHe3mDR/+TSwLPmZCEF5TvgHEEytB6wwLZQvVt67Yi7SpcjBXzIwV6Gaqg==
 
 normalize-path@^3.0.0:
   version "3.0.0"
