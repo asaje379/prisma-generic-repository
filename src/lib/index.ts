@@ -17,12 +17,13 @@ export class PrismaGenericRepository<
   UpdateInput,
   WhereInput,
   SelectInput,
+  IncludeInput = any,
 > {
   protected model: Model | any;
 
   async create(
     data: CreateInput,
-    options?: { select?: SelectInput; include?: any },
+    options?: { select?: SelectInput; include?: IncludeInput },
   ) {
     const { select, include } = options ?? {
       select: undefined,
@@ -42,7 +43,7 @@ export class PrismaGenericRepository<
   async update(
     id: string,
     data: UpdateInput,
-    options?: { select?: SelectInput; include?: any },
+    options?: { select?: SelectInput; include?: IncludeInput },
   ) {
     const { select, include } = options ?? {
       select: undefined,
@@ -59,7 +60,7 @@ export class PrismaGenericRepository<
   async updateBy(
     query: WhereInput,
     data: UpdateInput,
-    options?: { select?: SelectInput; include?: any },
+    options?: { select?: SelectInput; include?: IncludeInput },
   ) {
     const { select, include } = options ?? {
       select: undefined,
@@ -89,7 +90,7 @@ export class PrismaGenericRepository<
 
   async updateMany(
     items: Array<{ id: string; data: UpdateInput }>,
-    options?: { select?: SelectInput; include?: any },
+    options?: { select?: SelectInput; include?: IncludeInput },
   ) {
     const errors: Error[] = [];
     const { select, include } = options ?? {
@@ -116,7 +117,10 @@ export class PrismaGenericRepository<
     return { isSuccess: true };
   }
 
-  async getById(id: string, options?: { select?: SelectInput; include?: any }) {
+  async getById(
+    id: string,
+    options?: { select?: SelectInput; include?: IncludeInput },
+  ) {
     const { select, include } = options ?? {
       select: undefined,
       include: undefined,
@@ -130,7 +134,7 @@ export class PrismaGenericRepository<
 
   async get(
     query: WhereInput,
-    options?: { select?: SelectInput; include?: any },
+    options?: { select?: SelectInput; include?: IncludeInput },
   ) {
     const { select, include } = options ?? {
       select: undefined,
@@ -171,7 +175,15 @@ export class PrismaGenericRepository<
       paginationArgs,
       paginationOptions,
     })) as Input[];
-    const count = await this.count(query);
+
+    const finalQuery: Record<string, any> = { ...query };
+
+    if (paginationOptions?.search) {
+      const _query = paginate(paginationArgs, paginationOptions);
+      finalQuery.OR = _query.OR;
+    }
+
+    const count = await this.count(finalQuery as WhereInput);
     return { count, values };
   }
 
